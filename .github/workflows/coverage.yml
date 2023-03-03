@@ -22,12 +22,12 @@ jobs:
       - name: coverage
         working-directory: ./go/src
         run: |
-          GOROOT_BOOTSTRAP=/opt/hostedtoolcache/go/1.2.2/x64 ./all.bash
+          GOROOT_BOOTSTRAP=/opt/hostedtoolcache/go/1.20.0/x64 ./all.bash
           ../bin/go test -cover ./... -coverprofile=cover.out
           ../bin/go tool cover -html=cover.out -o cover.html
 
       - name: copy
-        run:
+        run: |
           mkdir -p ./public
           cp ./go/src/cover.html ./public/
 
